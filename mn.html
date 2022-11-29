@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <label>Expense</label>
+        <input type="number" id="expense" required>
+        <label for="">discription</label>
+        <input type="text" id="dis">
+        <label>category</label>
+      
+            <select id="opt" >
+                <option >movie</option>
+                <option >tour</option>
+                <option >trip</option>
+            </select>
+        <input type="submit" id="btn" value="Add Exepnse">
+    </form>
+    <ul id="ul">
+        <!-- <li></li> -->
+     </ul>
+</body>
+<script>
+   let form = document.getElementById('form');
+   form.addEventListener('submit',function(e){
+    e.preventDefault()
+     let expense = document.getElementById("expense").value;
+     let dis = document.getElementById("dis").value;
+     let opt = document.getElementById('opt').value;
+     let obj ={
+        expense :expense,
+        dis:dis,
+        opt:opt
+     }
+     localStorage.setItem(`${dis}`,JSON.stringify(obj));
+      showOnScreen(obj)
+      //clear input box after submit;
+       document.getElementById("expense").value = "";
+      document.getElementById("dis").value = "";
+      document.getElementById('opt').value = "";
+})
+window.addEventListener('load', function(){
+    let keys = Object.keys(localStorage);
+    for(let key of keys){
+        let exp = JSON.parse(localStorage[key])
+        showOnScreen(exp);
+      }
+})
+// show data on screen;
+  function showOnScreen(user){
+    let ul = document.getElementById('ul');
+    ul.innerHTML += `<li id="${user.dis}" >${user.exp} ${user.dis} ${user.opt}
+            <button onclick = deleteuser("${user.dis}")>x</button><button onclick = edituser("${user.dis}")> Edit</button</li>`
+  }
+
+// edit button
+  function edituser(obj){
+  // reverse data in input box;         note = before being deleted data, we get data from localstroge  thereofor we put here these line;;
+  let s = JSON.parse(localStorage.getItem(`${obj}`))
+    document.getElementById('dis').value = s.dis
+    document.getElementById('expense').value = s.expense
+    document.getElementById('opt').value = s.opt
+      deleteuser(obj)
+}
+
+  //delete button
+function deleteuser(dis){
+localStorage.removeItem(dis)
+remomeuserOnScreen(dis);
+}
+// delete screen
+function remomeuserOnScreen(d){
+    let ul = document.getElementById('ul');
+    let li = document.getElementById(d);
+      ul.removeChild(li)
+}  
+
+</script>
+</html>
