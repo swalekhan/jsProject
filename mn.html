@@ -9,7 +9,7 @@
 <body>
     <form id="form">
         <label>Expense</label>
-        <input type="number" id="expense" required>
+        <input type="text" id="expense" required>
         <label for="">discription</label>
         <input type="text" id="dis">
         <label>category</label>
@@ -25,6 +25,7 @@
         <!-- <li></li> -->
      </ul>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
    let form = document.getElementById('form');
    form.addEventListener('submit',function(e){
@@ -37,24 +38,38 @@
         dis:dis,
         opt:opt
      }
-     localStorage.setItem(`${dis}`,JSON.stringify(obj));
-      showOnScreen(obj)
+    //  localStorage.setItem(`${dis}`,JSON.stringify(obj));
+    //server
+    axios.post("https://crudcrud.com/api/5c6e30c0c2d241babd8f0e586e8154c9/studentId",obj)
+    .then((respons)=>{
+      console.log(respons)
+      showOnScreen(respons.data)
+    })
+    .catch((err)=>console.log(err))
+      
       //clear input box after submit;
        document.getElementById("expense").value = "";
       document.getElementById("dis").value = "";
       document.getElementById('opt').value = "";
 })
 window.addEventListener('load', function(){
-    let keys = Object.keys(localStorage);
-    for(let key of keys){
-        let exp = JSON.parse(localStorage[key])
-        showOnScreen(exp);
-      }
+    // let keys = Object.keys(localStorage);
+    // for(let key of keys){
+    //     // let exp = JSON.parse(localStorage[key])
+       
+    //   }
+    axios
+        .get("https://crudcrud.com/api/5c6e30c0c2d241babd8f0e586e8154c9/studentId")
+        .then((res)=>{
+         for(let i=0; i<res.data.length; i++)
+          {showOnScreen(res.data[i])}
+        })
+        .catch((err)=>console.log(err))
 })
 // show data on screen;
   function showOnScreen(user){
     let ul = document.getElementById('ul');
-    ul.innerHTML += `<li id="${user.dis}" >${user.exp} ${user.dis} ${user.opt}
+    ul.innerHTML += `<li id="${user.dis}" >${user.expense} ${user.dis} ${user.opt}
             <button onclick = deleteuser("${user.dis}")>x</button><button onclick = edituser("${user.dis}")> Edit</button</li>`
   }
 
