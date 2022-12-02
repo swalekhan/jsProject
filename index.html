@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="01.js" defer></script>
+</head>
+<body>
+    <button id="button" style=" background-color:blue">click</button>
+</body>
+<!-- <script> -->
+    // Write a function and use 'call' to call the function
+
+
+// function print(){
+
+//     return "hello";
+
+// }
+
+// console.log(print.call());
+
+
+
+// // Write a program using apply
+
+
+// let obj1 = {
+
+//     a:5
+
+// }
+
+// function print(b,c){
+
+//     return this.a + b + c;
+
+// }
+
+// console.log(print.apply(obj1,[1,2]))
+
+
+
+// // Write a program using bind
+
+
+// let obj = {
+
+//     a:5
+
+// }
+
+// function print(b,c){
+
+//     return this.a + b + c;
+
+// }
+
+// let ans3 = print.bind(obj);
+
+// console.log(ans3(1,2))
+
+// // Create a new object called Student with age 20 , write a function which prints the age of the student from the student object.
+
+
+// let student = {
+
+//     age:20
+
+// }
+
+// function print(){
+
+//     console.log(this.age)
+
+// }
+
+// let ans = print.bind(student);
+
+// ans()
+
+
+
+
+
+// // Write down the code like the way the youtuber does
+
+
+// // function curry  using find method;
+
+// function print(b,c){
+
+//     console.log(b+c)
+
+// }
+
+// let ans6 = print.bind(this, 2);
+
+// ans6(1)
+
+// let ans1 = print.bind(this, 2);
+
+// ans1(4)
+
+// // function curry  using closure method;
+
+// function print(a){
+
+//     return function(b){
+
+//         console.log(a + b);
+
+//     }
+
+// }
+
+// let answer  = print(2);
+
+// answergir(1)
+let name = (arr)=>{
+    console.log(arr[0],arr[1])
+}
+
+let fun = name.bind(this,["Ram","Shyam"]);
+
+fun()// Print Hello Ram
+
+fun()//print Hello Shyam
+
+
+
+
+// b()
+
+
+// curry 
+function sum(a){
+    return function(b){
+        return function(c){
+            return (d) => a+b+c+d
+        }
+    }
+}
+console.log(sum(1)(2)(3)(4))
+
+
+// this inside global scope
+// this inside object;
+// this inside in a method 
+// this inside in a function
+// this inside in a inner function
+// this inside in a constructor 
+// this inside in class;
+
+
+// this.table = "this Table"
+
+// this.k={
+//     name :"k"
+// }
+// console.log(window.k.name);
+
+// let john = {
+//     age:20,
+//     print(){
+//         console.log(this.age)
+//     }
+// }
+// john.print()
+
+// function print(){
+//     console.log(this.table);
+// }
+// print.call(this);
+
+// this inside in a function
+// this inside in a inner function
+// let print = function(){
+//     let innerfunc = function(){
+//         console.log(this.table);
+//     }
+//     innerfunc.call(this)
+// }
+// print.call(this);
+
+
+class student{
+    static i = 0
+    constructor(age,name,marks){
+        this.age = age;
+        this.name = name;
+        this.marks = marks;
+        student.i+=1
+       
+    }
+    check(a){
+        return (b) => console.log( this.marks > a && this.age >b ? this.name : "not  egligible");
+    }
+  a(){
+    console.log("hello");
+  }
+    static HMS(){
+        console.log(student.i)
+     }
+}
+let s0s = new student(20,"a",60)
+let s1s = new student(20,"a",60)
+let s2s = new student(22,"b",50)
+let s3s = new student(22,"c",70)
+let s4s = new student(23,"d",40)
+let s5s = new student(24,"e",50)
+
+
+ s0s.check(40)(18)
+ 
+// student.HMS();
+
+document.getElementById('button').addEventListener("click", function(){
+    console.log('click me')
+})
+
+let arr = [1,2,3];
+let obj = { a:"a"
+}
+let arr2 = [...arr,{...obj}]
+console.log(arr2)
+
+studentobj = {
+
+'yash': 26,
+
+'vaibhav': 24,
+
+'rajesh' : 25,
+
+}
+//     let keys = Object.keys(studentobj);
+//     let s = 0;
+//   for(let obj of keys){
+//         s+=studentobj[obj]
+        
+//   }
+  function findaverageage(studentObj){
+
+//write your code here.
+
+let keys = Object.keys(studentobj);
+    let s = 0;
+  for(let obj of keys){
+        s+=studentobj[obj]
+        
+  }
+  let averageAge = s/keys.length
+
+return averageAge;
+
+}
+   console.log(findaverageage(studentobj))
+
+   function sum(a){
+    return (b) =>(c) =>(d) => a+b+c+d  
+    }
+console.log(sum(1)(2)(3)(4));
+// 
+// .....................................
+function s(a){
+    return function(b){
+        return function(c){
+            return function(d){
+                return a+b+c+d
+            }
+        }
+    }
+}
+let firstFunc = s(1);
+let seconndFunc = firstFunc(2);
+let thirdFunc = seconndFunc(3);
+ console.log(thirdFunc(4))
+//   console.log(s/keys.length)
+<!-- </script> -->
+</html>

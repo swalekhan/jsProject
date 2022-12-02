@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my project</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+     <div class="outer-box" id="obox">
+        <div class="inner-box">
+            <header class="singup-header">
+                <h1 id="h1">singup</h1>
+                <p>It will take 30 sec</p>
+                <input type="text" placeholder="serach" id="search">
+            </header>
+            <main class="singup-main">
+                <form action="" id="form" >
+                    <p>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="enter your name" required>
+                    </p>
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="useremail" placeholder="123@ggmail.com" required>
+                    </p>
+                    <p>
+                        <label for="pass">Password</label>
+                        <input type="password" id="pass" placeholder="enter your password" required>
+                    </p>
+                    <p>
+                        <input type="submit" id="submit" value="Creat account">
+                    </p>
+                    <ul id="ul">
+                    </ul>
+                </form>
+            </main>
+            <footer class="singup-footer"><p>if you have already account? <a href="3">login</a></p></footer>
+        </div>
+        <!-- circle -->
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+     </div>
+</body>
+<script>
+    document.querySelector('form').addEventListener('mouseover',function(){
+      let h1 =  document.querySelector('h1');
+    //    h1.style.backgroundColor= "blue";
+       h1.style.color = 'rgb(53, 136, 220)';
+       document.getElementById('h1').style.textShadow = '2px 2px 5px rgb(53, 136, 220)';
+    })
+    document.getElementById('form').addEventListener('mouseout', function(){
+        document.getElementById('h1').style.color = 'black';
+       document.getElementById('h1').style.textShadow = '0px 0px 0px';
+    });
+
+         document.querySelector('form').addEventListener('submit', function(e){
+            let name = document.getElementById('name').value;
+            let email = e.target.useremail.value;
+            let pass = document.getElementById('pass').value;
+            let obj ={
+                name:name,
+                email:email,
+                password:pass
+            }
+            localStorage.setItem(`${email}`,JSON.stringify(obj));
+         })
+         window.addEventListener('load',function(){
+            let keys = Object.keys(localStorage);
+            for(let key of keys){
+                let email = JSON.parse(localStorage[key]).email;
+                let name = JSON.parse(localStorage[key]).name;
+                let form = document.getElementById('ul');
+                let li = document.createElement('li');
+                li.className = "list-item";
+                li.textContent = name + " " + email;
+                // delete button
+                let del = document.createElement("button");
+                del.textContent = "X";
+                del.className = "a delete";
+                li.append(del)
+                form.append(li);
+            }
+         });
+        
+         document.querySelector('#search').addEventListener('keyup',function(e){
+            let text = e.target.value.toLowerCase();
+        
+           let li = document.querySelectorAll("li");
+           Array.from(li).forEach(e => {
+            if(e.textContent.toLowerCase().search(text) != -1){
+                  e.style.display = 'block';
+            }else{
+                e.style.display = 'none';
+            }
+             console.log(e.textContent);
+           })
+            console.log(text)
+         })
+
+     document.getElementById('ul').addEventListener('click', function(e){
+         if(e.target.classList.contains("delete")){
+            if(confirm("are you sure")){
+              let li =  e.target.parentElement
+                li.remove();
+                console.log(li)
+            }
+         }
+        console.log(e)
+     })
+
+</script>
+</html>  
