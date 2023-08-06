@@ -40,7 +40,7 @@
      }
     //  localStorage.setItem(`${dis}`,JSON.stringify(obj));
     //server
-    axios.post("https://crudcrud.com/api/5c6e30c0c2d241babd8f0e586e8154c9/studentId",obj)
+    axios.post("https://crudcrud.com/api/22321fe795ab4adaa80ea05f46411bab/sId",obj)
     .then((respons)=>{
       console.log(respons)
       showOnScreen(respons.data)
@@ -59,18 +59,20 @@ window.addEventListener('load', function(){
        
     //   }
     axios
-        .get("https://crudcrud.com/api/5c6e30c0c2d241babd8f0e586e8154c9/studentId")
+        .get("https://crudcrud.com/api/22321fe795ab4adaa80ea05f46411bab/sId")
         .then((res)=>{
          for(let i=0; i<res.data.length; i++)
-          {showOnScreen(res.data[i])}
+          {showOnScreen(res.data[i])
+            // console.log(res.data[i]._id)
+          }
         })
         .catch((err)=>console.log(err))
 })
 // show data on screen;
   function showOnScreen(user){
     let ul = document.getElementById('ul');
-    ul.innerHTML += `<li id="${user.dis}" >${user.expense} ${user.dis} ${user.opt}
-            <button onclick = deleteuser("${user.dis}")>x</button><button onclick = edituser("${user.dis}")> Edit</button</li>`
+    ul.innerHTML += `<li id="${user._id}" >${user.expense} ${user.dis} ${user.opt}
+            <button onclick = deleteuser("${user._id}")>x</button><button onclick = edituser("${user.dis}")> Edit</button</li>`
   }
 
 // edit button
@@ -84,9 +86,13 @@ window.addEventListener('load', function(){
 }
 
   //delete button
-function deleteuser(dis){
-localStorage.removeItem(dis)
-remomeuserOnScreen(dis);
+function deleteuser(d){
+  axios
+  .delete(`https://crudcrud.com/api/22321fe795ab4adaa80ea05f46411bab/sId/${d}`)
+  .then((a)=>console.log(a))
+  .catch((err)=>console.log(err))
+// localStorage.removeItem(dis)
+remomeuserOnScreen(d);
 }
 // delete screen
 function remomeuserOnScreen(d){
