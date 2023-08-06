@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="promise.js" defer></script>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // call back;
+    // let arr = [
+    //     { title: "post one", body: "one" },
+    //     { title: "post two", body: "two" },
+    // ];
+
+    // function getPost() {
+    //     setTimeout(() => {
+    //         let out = "";
+    //         arr.forEach((a) => {
+    //             out += `<li>${a.title}</li>`
+    //         })
+    //         document.body.innerHTML = out
+    //     }, 1000)
+    // }
+
+
+    // function secFunc(obj, callback) {
+    //     setTimeout(() => {
+    //         arr.push(obj);
+    //         callback()
+    //     }, 2000)
+    // }
+
+
+    // function create4thPost(obj, callback) {
+    //     setTimeout(() => {
+    //         arr.push(obj);
+    //         callback({ title: "post three", body: "three" }, getPost)
+    //     }, 0)
+    // }
+    // create4thPost({ title: "post four", body: "four" }, secFunc)
+
+// ..............................................
+    // let post = [
+    //     { title: 'one', body: 'one', createdAt: new Date().getSeconds() }
+    // ]
+    // console.log(post)
+    // function getPost() {
+    //     setTimeout(() => {
+    //         let out = "";
+    //         post.forEach((a) => {
+    //             out += `<li>${a.title} ${`post ${new Date().getSeconds() - a.createdAt} sec ago`}</li>`
+    //         })
+    //         document.body.innerHTML = out
+    //     }, 1000)
+    // }
+
+
+    // function creatPost(obj, callback) {
+    //     setTimeout(() => {
+    //         post.push(obj);
+    //     }, 1000)
+    //     callback()
+    // }
+
+
+    // function creatPostM(obj, callb) {
+    //     setTimeout(() => {
+    //         post.push(obj);
+    //     }, 4000);
+    //     callb({ title: "post two", body: "two", createdAt: new Date().getSeconds() }, getPost);
+    //     update();
+    // }
+
+    //    function update(){
+    //     setTimeout(()=>{
+    //         creatPostM({title:"post three",body:"three", createdAt:new Date().getSeconds()},creatPost);
+    //     },1000)
+    //    }
+    //     update()
+
+    // function display_ct5() {
+    // var x = new Date()
+    // // var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
+
+    // // var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+    // // x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds() + ":" + ampm;
+    // document.body.innerHTML = x;
+    // display_c5();
+    //  }
+    //  function display_c5(){
+    // var refresh=1000; // Refresh rate in milli seconds
+    // mytime=setTimeout('display_ct5()',refresh)
+    // }
+    // display_c5()
+    //    let arr  = [
+    //     {title:"post", time:new Date().getSeconds},
+    //    ]
+
+    // function  lastEditedInSecondsAgo(obj,callback){
+    //         arr.push(obj);
+    //         callback();
+    // }
+    // setInterval(()=>{
+    //     lastEditedInSecondsAgo()
+    // },1000)
+
+    // function lastEditedInSecondsAgo(s) {
+    //     document.body.innerHTML = s
+    // }
+    // let i = 0
+    // setInterval(() => {
+    //     i++
+    //     lastEditedInSecondsAgo(`post ${i} seconds ago`)
+    // }, 1000)
+</script>
+
+</html>

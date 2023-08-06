@@ -72,24 +72,24 @@ window.addEventListener('load', function(){
   function showOnScreen(user){
     let ul = document.getElementById('ul');
     ul.innerHTML += `<li id="${user._id}" >${user.expense} ${user.dis} ${user.opt}
-            <button onclick = deleteuser("${user._id}")>x</button><button onclick = edituser("${user.dis}")> Edit</button</li>`
+            <button onclick = deleteuser("${user._id}")>x</button><button onclick = edituser("${user._id}","${user.expense}","${user.dis}","${user.opt}")> Edit</button</li>`
   }
 
 // edit button
-  function edituser(obj){
+  function edituser(id,expense,dis,opt){
   // reverse data in input box;         note = before being deleted data, we get data from localstroge  thereofor we put here these line;;
-  let s = JSON.parse(localStorage.getItem(`${obj}`))
-    document.getElementById('dis').value = s.dis
-    document.getElementById('expense').value = s.expense
-    document.getElementById('opt').value = s.opt
-      deleteuser(obj)
+  // let s = JSON.parse(localStorage.getItem(`${obj}`))
+    document.getElementById('dis').value = dis
+    document.getElementById('expense').value = expense
+    document.getElementById('opt').value = opt
+      deleteuser(id)
 }
 
   //delete button
 function deleteuser(d){
   axios
   .delete(`https://crudcrud.com/api/22321fe795ab4adaa80ea05f46411bab/sId/${d}`)
-  .then((a)=>console.log(a))
+  .then((a)=>console.log(a.data))
   .catch((err)=>console.log(err))
 // localStorage.removeItem(dis)
 remomeuserOnScreen(d);

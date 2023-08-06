@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+*{
+   
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'lato',serif;
+}
+.outer-box{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to top left,rgb(148, 214, 255),rgb(31, 135, 254));
+}
+.inner-box{
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+    padding: 20px 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgb(47, 122, 197);
+    z-index: 2;
+}
+
+.singup-header h1{
+    /* font-size: 2.5rem;
+    color: rgb(36, 31, 31); */
+}
+
+.singup-main{
+    margin: 20px 0px;
+}
+ .singup-main p{
+  margin: 10px 0;
+ }
+ .singup-main p label{
+    display: block;
+    font-weight: bold;
+ }
+ .singup-main p input{
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #cccc;
+  border-radius: 4px;
+  margin-top: 4px;
+  box-shadow: 1px 1px 5px #cccc;
+ }
+/* anthor way y using id like #submit */
+ .singup-main p input[type="submit"]{
+   background-color: rgb(53, 136, 220);
+   border: none;
+   color: white;
+   cursor: pointer;
+ }
+ #submit:hover{
+    background-color: rgb(26, 108, 190);
+ }
+
+ .singup-footer p{
+     color:black;
+     text-align: center;
+ }
+ .singup-footer p a{
+    color: rgb(53, 136, 220);
+ }
+
+ .circle{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background: linear-gradient(to bottom right, #ffffff, #ffffff09);
+    position: absolute;
+ }
+ .c1{
+    left: 3%;
+    top: 20%;
+ }
+ .c2{
+    right:3%;
+    bottom: 10%;
+ }
+
+ .list-item{
+    list-style: none;
+    margin: 8px 0px;
+    border: 1px solid #cccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #cccc;
+    background: linear-gradient(to top right, #ffffff,#2d8ac4);
+    /* margin: 5px 0; */
+ }
+
+ .singup-header p{
+    display: inline;
+    position: relative;
+ }
+ #search{
+    position: relative;
+    width: 150px;
+    left: 40px;
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid #cccc;
+ }
